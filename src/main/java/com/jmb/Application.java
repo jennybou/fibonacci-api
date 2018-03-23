@@ -8,10 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class Application {
+
+    @Autowired
+    Environment environment;
 
     @Autowired
     UserService userService;
@@ -27,9 +31,11 @@ public class Application {
 
     @EventListener
     public void seedData(ContextRefreshedEvent event) {
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword("password");
-        userService.addUser(user);
+        if (environment.acceptsProfiles("dev") || environment.acceptsProfiles("test")) {
+            User user = new User();
+            user.setUsername("admin");
+            user.setPassword("password");
+            userService.addUser(user);
+        }
     }
 }

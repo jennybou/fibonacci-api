@@ -26,9 +26,10 @@ An executable JAR file will be created and stored in the build/libs directory.
 
 The executable jar can be run using the following command:
 
-    java -jar build/libs/fibonacci-api-1.0.jar
+    java -jar build/libs/fibonacci-api-1.0.jar --spring.profiles.active=dev
 
 As it is a Spring Boot application, the jar contains an embedded Tomcat servlet container. The application runs on port 8080.
+If the 'dev' profile is active a user will be created to test the secure endpoint discussed below.
 
 
 ## Running the tests
