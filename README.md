@@ -32,7 +32,9 @@ As it is a Spring Boot application, the jar contains an embedded Tomcat servlet 
 
 
 ## Running the tests
-    gradle test
+The JAVA_HOME environment variable must be set to run the tests. Use the following command:
+    
+    gradlew test
 
 
 ## Example Fibonacci Request
