@@ -2,5 +2,7 @@ out/
 *.iml
 .idea/
 .gradle/
+build/classes/
+build/tmp
 
 
